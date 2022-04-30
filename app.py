@@ -9,7 +9,7 @@ import numpy as np
 
 model = tf.keras.models.load_model("debunker_model")
 
-class_names = ["fake", "true"]
+class_names = ["fake news", "true news"]
 
 def scrape_text(url):
 
@@ -34,12 +34,16 @@ def main():
         replaced_string = text.replace('"', "")
         
 
+        
+
+        
+
+        st.header(pred)
+
         st.write(replaced_string)
 
         data = model.predict([replaced_string])
         pred = class_names[np.argmax(data)]
-
-        st.write(pred)
 
 
 
